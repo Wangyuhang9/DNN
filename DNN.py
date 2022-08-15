@@ -14,7 +14,7 @@ LEARN_RATE = 0.001
 
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 train_data = torch.load('normal_train_dataset.pkl') + torch.load('DoS_attack_train_dataset.pkl')
-test_data = torch.load('normal_pre_dataset.pkl') +torch.load('DoS1_pre_attack_dataset.pkl')
+test_data = torch.load('normal1_pre_dataset.pkl') +torch.load('DoS1_pre_attack_dataset.pkl')
 
 train_loader = DataLoader(dataset=train_data, batch_size=BATCH_SIZE, shuffle=True)
 test_loader = DataLoader(dataset=test_data, batch_size=1, shuffle=True)
@@ -39,7 +39,7 @@ class DNN(nn.Module):
             nn.Linear(128, 64),
             nn.Sigmoid()
         )
-        # 输出层
+
         self.layer_out = nn.Linear(64, 2)
 
     def forward(self, x):
