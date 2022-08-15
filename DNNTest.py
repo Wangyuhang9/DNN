@@ -12,12 +12,12 @@ import numpy as np
 class DNN(nn.Module):
     def __init__(self):
         super(DNN, self).__init__()
-        # 隐藏层 1，使用 sigmoid 激活函数
+       
         self.layer1 = nn.Sequential(
             nn.Linear(841, 512),
             nn.Sigmoid()
         )
-        # 隐藏层 2，使用 sigmoid 激活函数
+        
         self.layer2 = nn.Sequential(
             nn.Linear(512, 256),
             nn.Sigmoid()
@@ -32,7 +32,7 @@ class DNN(nn.Module):
             nn.Linear(128, 64),
             nn.Sigmoid()
         )
-        # 输出层
+    
         self.layer_out = nn.Linear(64, 2)
 
     def forward(self, x):
@@ -193,37 +193,8 @@ test_dataset = torch.load('Dos10_pre_attack_dataset.pkl')\
 test(test_dataset)
 
 '''
-print(Recall)
-print(Precision)
-print(F1)
-print(FPR)
 
 print(np.max(Recall),np.mean(Recall),np.min(Recall))
 print(np.max(Precision),np.mean(Precision),np.min(Precision))
 print(np.max(F1),np.mean(F1),np.min(F1))
 print(np.max(FPR),np.mean(FPR),np.min(FPR))
-
-'''
-已知加未知
-[0.2158, 0.2149, 0.2158, 0.2154, 0.2156, 0.2152, 0.2166, 0.2152, 0.2149]
-[0.9991, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
-[0.3549, 0.3538, 0.355, 0.3545, 0.3547, 0.3542, 0.3561, 0.3542, 0.3538]
-[0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-0.2166 0.2154888888888889 0.2149
-1.0 0.9999 0.9991
-0.3561 0.3545777777777778 0.3538
-0.001 0.00011111111111111112 0.0
-'''
-
-'''
-已知
-[1.0, 0.9947, 0.9973, 0.9955, 0.9991, 0.9991, 1.0, 0.9982, 0.9973]
-[0.9991, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
-[0.9995, 0.9973, 0.9986, 0.9977, 0.9995, 0.9995, 1.0, 0.9991, 0.9986]
-[0.001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-1.0 0.9979111111111111 0.9947
-1.0 0.9999 0.9991
-1.0 0.9988666666666668 0.9973
-0.001 0.00011111111111111112 0.0
-
-'''
