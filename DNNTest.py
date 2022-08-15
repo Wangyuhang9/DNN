@@ -98,6 +98,7 @@ def test(test_dataset):
         F1.append(round(2 * P * R / (P + R), 4))
         FPR.append(round(FP / (TN + FP), 4))
 
+#Test the detection performance against known attacks
 test_dataset = torch.load('Dos2_pre_attack_dataset.pkl')\
             +torch.load('normal2_pre_dataset.pkl')
 test(test_dataset)
@@ -141,10 +142,8 @@ print(Precision)
 print(F1)
 
 
-print(np.min(Recall),np.mean(Recall),np.max(Recall))
-print(np.min(Precision),np.mean(Precision),np.max(Precision))
-print(np.min(F1),np.mean(F1),np.max(F1))
 '''
+#Test the detection performance after an unknown attack occurs
 
 test_dataset = torch.load('Dos2_pre_attack_dataset.pkl')\
             +torch.load('RPM2_pre_attack_dataset.pkl')+torch.load('Gear2_pre_attack_dataset.pkl')\
